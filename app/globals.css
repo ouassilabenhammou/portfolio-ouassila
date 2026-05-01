@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+:root {
+  --color-background: #fffdf5;
+  --color-primary: #4a6fd6;
+  --color-secondary: #2d4a8a;
+  --color-muted-text: #7c8da6;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-roboto), sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-primary);
+}
