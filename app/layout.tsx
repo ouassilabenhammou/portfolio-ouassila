@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { roboto, anton } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Ouassila - Portfolio",
@@ -13,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="nl">
+      <body className={`${roboto.variable} ${anton.variable}`}>{children}</body>
     </html>
   );
 }
