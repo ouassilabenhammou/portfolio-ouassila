@@ -1,13 +1,16 @@
-"use client";
+import type { ComponentType, SVGProps } from "react";
 
 type ActionButtonProps = {
-  imageSrc?: string;
+  Icon?: ComponentType<SVGProps<SVGSVGElement>>;
+  iconClassName?: string;
 };
 
-export default function ActionButton({ imageSrc }: ActionButtonProps) {
+export default function ActionButton({ Icon, iconClassName }: ActionButtonProps) {
   return (
     <div>
-      <img src={imageSrc} alt="" />
+      {Icon ? (
+        <Icon aria-hidden focusable="false" className={iconClassName} />
+      ) : null}
     </div>
   );
 }
