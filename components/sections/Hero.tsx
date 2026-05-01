@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function Hero() {
-  return <div>Hero</div>;
+  return (
+    <section>
+      <img src="/images/naam.svg" alt="Hero-afbeelding" />
+    </section>
+  );
 }
