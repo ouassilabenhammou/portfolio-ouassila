@@ -2,6 +2,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { roboto, anton } from "./fonts";
 
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+
 export const metadata: Metadata = {
   title: "Ouassila - Portfolio",
   description:
@@ -15,7 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="nl">
-      <body className={`${roboto.variable} ${anton.variable}`}>{children}</body>
+      <body className={`${roboto.variable} ${anton.variable}`}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
