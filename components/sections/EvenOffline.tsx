@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function EvenOffline() {
-  return <div></div>;
+  return <div>Even Offline</div>;
 }
