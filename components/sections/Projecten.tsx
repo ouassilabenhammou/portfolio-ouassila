@@ -10,7 +10,7 @@ export default function Projecten() {
         description="Interactieve contactervaring ontworpen voor LiveWall, waarbij een traditioneel formulier is omgezet naar een gamified user experience."
         tags={["Next.js", "Tailwind CSS", "Three.js"]}
         year={2026}
-        imageUrl="/projecten/livewall-gameshow.png"
+        imageUrl="/images/projecten/livewall-gameshow.png"
         alt="livewall-gameshow"
       />
       <ProjectCard
@@ -18,7 +18,7 @@ export default function Projecten() {
         description="CSS art visuals uitgewerkt als experimenteel project, gericht op het verkennen van de creatieve mogelijkheden van code."
         tags={["Svelte"]}
         year={2025}
-        imageUrl="/projecten/css-art.png"
+        imageUrl="/images/projecten/css-art.png"
         alt="css-art"
       />
       <ProjectCard
@@ -26,7 +26,7 @@ export default function Projecten() {
         description="Promotionele website ontwikkeld voor de open-source KNMI-app (2ManyDots), gericht op meer bekendheid en downloads."
         tags={["Next.js", "Tailwind CSS"]}
         year={2025}
-        imageUrl="/projecten/knmi-landingpage.png"
+        imageUrl="/images/projecten/knmi-landingpage.png"
         alt="knmi-app landingpage"
       />
 
@@ -35,7 +35,7 @@ export default function Projecten() {
         description="3D-scène gemaakt als experimenteel project, gericht op het verkennen van AI en 3D-modellering en animatie."
         tags={["AI Tools", "3D Modeling", "Blender"]}
         year={2024}
-        imageUrl="/projecten/generative-ai.png"
+        imageUrl="/images/projecten/generative-ai.png"
         alt="generative-ai"
       />
     </section>
