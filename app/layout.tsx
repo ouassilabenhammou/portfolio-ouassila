@@ -1,5 +1,5 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { roboto, anton } from "./fonts";
 
 import Header from "@/components/layout/Header";
@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   title: "Ouassila - Portfolio",
   description:
     "Portfolio van Ouassila, gericht op front-end development en design.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
 };
 
 export default function RootLayout({

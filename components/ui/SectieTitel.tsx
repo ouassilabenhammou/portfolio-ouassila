@@ -7,11 +7,13 @@ type SectieTitelProps = {
 
 export default function SectieTitel({ title, subtitle }: SectieTitelProps) {
   return (
-    <div>
-      <h2 className={`${anton.className} text-[80px] leading-[1.1] `}>
+    <div className="min-w-0 max-w-full">
+      <h2
+        className={`${anton.className} max-w-full text-[80px] leading-[1.1] wrap-break-word`}
+      >
         {title}
       </h2>
-      <p className="text-[18px] leading-normal text-(--color-muted-text)">
+      <p className="max-w-full text-[18px] leading-normal wrap-break-word text-(--color-muted-text)">
         {subtitle}
       </p>
     </div>
