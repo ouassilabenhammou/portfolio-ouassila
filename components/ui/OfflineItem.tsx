@@ -1,4 +1,7 @@
+"use client";
+
 import type { CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { anton } from "@/app/fonts";
 
@@ -14,6 +17,10 @@ type Props = {
   /** Extra horizontale offset (px); bij afbeelding rechts vaak negatief om richting ‘schilderen’ te schuiven. */
   desktopImageXNudgePx?: number;
 };
+
+const MOBILE_MQ = "(max-width: 767px)";
+/** Alleen het middelste ~24% van het viewport telt als “in het midden”. */
+const CENTER_ROOT_MARGIN = "-38% 0px -38% 0px";
 
 function RollingHeading({ text }: { text: string }) {
   return (
@@ -58,6 +65,9 @@ export default function OfflineItem({
   desktopImageYNudgePx,
   desktopImageXNudgePx,
 }: Props) {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [hasRevealedFromCenter, setHasRevealedFromCenter] = useState(false);
+
   const imageCssVars =
     desktopImageYNudgePx != null || desktopImageXNudgePx != null
       ? ({
@@ -70,9 +80,50 @@ export default function OfflineItem({
         } as CSSProperties)
       : undefined;
 
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+
+    const mq = window.matchMedia(MOBILE_MQ);
+    let io: IntersectionObserver | null = null;
+
+    const attach = () => {
+      io?.disconnect();
+      io = null;
+      if (!mq.matches) return;
+
+      io = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (entry?.isIntersecting) {
+            setHasRevealedFromCenter(true);
+          }
+        },
+        {
+          root: null,
+          rootMargin: CENTER_ROOT_MARGIN,
+          threshold: 0,
+        },
+      );
+      io.observe(el);
+    };
+
+    attach();
+    mq.addEventListener("change", attach);
+    return () => {
+      mq.removeEventListener("change", attach);
+      io?.disconnect();
+    };
+  }, []);
+
+  const groupClass =
+    `offline-item-group relative flex min-w-0 max-w-full flex-col items-center justify-center gap-4` +
+    (hasRevealedFromCenter ? " offline-mobile-center-active" : "");
+
   return (
     <div
-      className="offline-item-group relative flex min-w-0 max-w-full flex-col items-center justify-center gap-4"
+      ref={rootRef}
+      className={groupClass}
       style={stackingZIndex != null ? { zIndex: stackingZIndex } : undefined}
     >
       <div className="relative flex min-w-0 flex-col items-center gap-4">
@@ -99,7 +150,7 @@ export default function OfflineItem({
           alt={title}
           width={250}
           height={250}
-          className="relative z-10 rounded-[10px] md:hidden"
+          className="offline-mobile-image relative z-10 rounded-[10px] md:hidden"
         />
       </div>
     </div>
