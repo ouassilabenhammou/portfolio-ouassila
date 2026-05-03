@@ -7,6 +7,12 @@ type Props = {
   image: string;
   /** Desktop hover: afbeelding naast de titel; `left` = links van de tekst. */
   imageSide: "left" | "right";
+  /** Z-index van het hele item (voor overlap met buren bij hover-afbeelding). */
+  stackingZIndex?: number;
+  /** Extra verticale offset van de desktop-hoverafbeelding (px; positief omlaag, negatief omhoog). */
+  desktopImageYNudgePx?: number;
+  /** Extra horizontale offset (px); bij afbeelding rechts vaak negatief om richting ‘schilderen’ te schuiven. */
+  desktopImageXNudgePx?: number;
 };
 
 function RollingHeading({ text }: { text: string }) {
@@ -44,9 +50,31 @@ const desktopImageSideClass: Record<Props["imageSide"], string> = {
   right: "left-[calc(100%+0.75rem)] origin-left",
 };
 
-export default function OfflineItem({ title, image, imageSide }: Props) {
+export default function OfflineItem({
+  title,
+  image,
+  imageSide,
+  stackingZIndex,
+  desktopImageYNudgePx,
+  desktopImageXNudgePx,
+}: Props) {
+  const imageCssVars =
+    desktopImageYNudgePx != null || desktopImageXNudgePx != null
+      ? ({
+          ...(desktopImageYNudgePx != null && {
+            "--offline-img-y-nudge": `${desktopImageYNudgePx}px`,
+          }),
+          ...(desktopImageXNudgePx != null && {
+            "--offline-img-x-nudge": `${desktopImageXNudgePx}px`,
+          }),
+        } as CSSProperties)
+      : undefined;
+
   return (
-    <div className="offline-item-group flex min-w-0 max-w-full flex-col items-center justify-center gap-4">
+    <div
+      className="offline-item-group relative flex min-w-0 max-w-full flex-col items-center justify-center gap-4"
+      style={stackingZIndex != null ? { zIndex: stackingZIndex } : undefined}
+    >
       <div className="relative flex min-w-0 flex-col items-center gap-4">
         <div className="relative inline-block max-w-full">
           <Image
@@ -55,7 +83,8 @@ export default function OfflineItem({ title, image, imageSide }: Props) {
             width={250}
             height={250}
             aria-hidden
-            className={`offline-item-desktop-image pointer-events-none absolute top-1/2 z-0 hidden h-[200px] w-[200px] rounded-[10px] shadow-lg md:block ${desktopImageSideClass[imageSide]}`}
+            style={imageCssVars}
+            className={`offline-item-desktop-image offline-item-desktop-image--tilt-${imageSide} pointer-events-none absolute top-1/2 z-0 hidden h-[200px] w-[200px] rounded-[10px] shadow-lg md:block ${desktopImageSideClass[imageSide]}`}
           />
 
           <h1

@@ -100,20 +100,38 @@ body {
 
 @media (min-width: 768px) {
   .offline-item-desktop-image {
-    opacity: 0;
-    transform: translateY(-50%) scale(0.82);
-    transition:
-      opacity 0.5s ease-out,
-      transform 0.5s ease-out;
+    visibility: hidden;
+    transition: transform 0.5s ease-out;
+  }
+
+  .offline-item-desktop-image--tilt-left {
+    transform: translateX(var(--offline-img-x-nudge, 0px))
+      translateY(calc(-50% + var(--offline-img-y-nudge, 0px))) scale(0.82)
+      rotate(-5deg);
+  }
+
+  .offline-item-desktop-image--tilt-right {
+    transform: translateX(var(--offline-img-x-nudge, 0px))
+      translateY(calc(-50% + var(--offline-img-y-nudge, 0px))) scale(0.82)
+      rotate(5deg);
   }
 
   .offline-item-group:has(.offline-title-hover:hover) .offline-roll-inner {
     transform: translateY(-50%);
   }
 
-  .offline-item-group:has(.offline-title-hover:hover) .offline-item-desktop-image {
-    opacity: 0.95;
-    transform: translateY(-50%) scale(1);
+  .offline-item-group:has(.offline-title-hover:hover) .offline-item-desktop-image--tilt-left {
+    visibility: visible;
+    transform: translateX(var(--offline-img-x-nudge, 0px))
+      translateY(calc(-50% + var(--offline-img-y-nudge, 0px))) scale(1)
+      rotate(-5deg);
+  }
+
+  .offline-item-group:has(.offline-title-hover:hover) .offline-item-desktop-image--tilt-right {
+    visibility: visible;
+    transform: translateX(var(--offline-img-x-nudge, 0px))
+      translateY(calc(-50% + var(--offline-img-y-nudge, 0px))) scale(1)
+      rotate(5deg);
   }
 }
 
@@ -127,7 +145,17 @@ body {
     transition: none;
   }
 
-  .offline-item-group:has(.offline-title-hover:hover) .offline-item-desktop-image {
-    transform: translateY(-50%) scale(1);
+  .offline-item-group:has(.offline-title-hover:hover) .offline-item-desktop-image--tilt-left {
+    visibility: visible;
+    transform: translateX(var(--offline-img-x-nudge, 0px))
+      translateY(calc(-50% + var(--offline-img-y-nudge, 0px))) scale(1)
+      rotate(-5deg);
+  }
+
+  .offline-item-group:has(.offline-title-hover:hover) .offline-item-desktop-image--tilt-right {
+    visibility: visible;
+    transform: translateX(var(--offline-img-x-nudge, 0px))
+      translateY(calc(-50% + var(--offline-img-y-nudge, 0px))) scale(1)
+      rotate(5deg);
   }
 }
