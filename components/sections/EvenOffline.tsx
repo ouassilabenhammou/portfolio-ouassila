@@ -39,7 +39,7 @@ const items: OfflineEntry[] = [
 
 export default function EvenOffline() {
   return (
-    <section>
+    <section className="min-h-screen flex flex-col items-center justify-center">
       <SectieTitel
         title="Even Offline"
         subtitle="Als ik even offline ben, ben ik waarschijnlijk..."
