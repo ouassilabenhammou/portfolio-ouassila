@@ -20,7 +20,7 @@ export default function OverMij() {
   return (
     <section
       aria-labelledby="over-mij-heading"
-      className={`${anton.className} flex w-full min-w-0 max-w-full flex-col items-center text-center uppercase text-[32px] leading-[1.1] text-(--color-secondary) max-md:px-0 md:px-4 min-[1440px]:px-0 lg:text-[45px]`}
+      className={`${anton.className} flex w-full min-w-0 max-w-full flex-col items-center text-center uppercase text-[26px] leading-[1.1] text-(--color-secondary) max-md:px-0 md:px-4 min-[1440px]:px-0 lg:text-[45px]`}
     >
       <div className="flex w-full min-w-0 max-w-full flex-col items-center gap-5">
         {/* Mobiel — tot lg (tablet / brede phones): zelfde uppercase als sectie */}
@@ -43,7 +43,9 @@ export default function OverMij() {
             />
             <span>ict</span>
           </p>
-          <p className={mobilePlainLineClass}>met een achtergrond in media</p>
+          <p className={mobilePlainLineClass}>
+            met een achtergrond in media design.
+          </p>
           <p className={mobilePlainLineClass}>momenteel verdiep ik me in</p>
           <p className={mobileIconRowClass}>
             <span>front-end development</span>
@@ -59,7 +61,7 @@ export default function OverMij() {
             <LampIcon
               aria-hidden
               focusable="false"
-              className={`${iconClass} mx-1 text-[#FFD166]`}
+              className={`${iconClass}  text-[#FFD166]`}
             />
           </p>
           <div className="flex w-full min-w-0 max-w-full flex-col items-center gap-4 text-center">
