@@ -3,9 +3,9 @@ import ProjectCard from "../ui/ProjectCard";
 
 export default function Projecten() {
   return (
-    <section>
+    <section className="mb-40">
       <SectieTitel title="Mijn Werk" subtitle="Geselecteerde projecten" />
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-2">
         <ProjectCard
           title="Interactief contactformulier"
           description="Interactieve contactervaring ontworpen voor LiveWall, waarbij een traditioneel formulier is omgezet naar een gamified user experience."
