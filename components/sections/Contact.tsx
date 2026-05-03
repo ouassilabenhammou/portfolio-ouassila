@@ -1,18 +1,16 @@
 import React from "react";
 import SectieTitel from "../ui/SectieTitel";
 import ActionButton from "../ui/ActionButton";
-import ArrowButtonIcon from "@/public/icons/arrow-button.svg";
 export default function Contact() {
   return (
-    <section>
+    <section className="relative z-10 flex flex-col items-center overflow-hidden rounded-b-[60px] bg-(--color-background) pb-2 md:rounded-b-[85px] md:pb-3">
       <SectieTitel
         title="Laten we samen iets moois maken"
         subtitle="Beschikbaar voor afstudeerstage"
       />
-      <ActionButton
-        Icon={ArrowButtonIcon}
-        iconClassName="text-(--color-primary)"
-      />
+      <div className="md:mt-5">
+        <ActionButton />
+      </div>
     </section>
   );
 }
