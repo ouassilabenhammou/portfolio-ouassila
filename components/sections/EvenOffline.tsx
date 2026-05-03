@@ -29,9 +29,14 @@ export default function EvenOffline() {
         subtitle="Als ik even offline ben, ben ik waarschijnlijk..."
       />
 
-      <div>
+      <div className="mt-10 flex flex-col gap-5 md:mt-20 ">
         {items.map((item, index) => (
-          <OfflineItem key={item.title} title={item.title} image={item.image} />
+          <OfflineItem
+            key={item.title}
+            title={item.title}
+            image={item.image}
+            imageSide={index % 2 === 0 ? "left" : "right"}
+          />
         ))}
       </div>
     </section>

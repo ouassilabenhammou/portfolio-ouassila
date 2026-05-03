@@ -1,20 +1,78 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { anton } from "@/app/fonts";
+
 type Props = {
   title: string;
   image: string;
+  /** Desktop hover: afbeelding naast de titel; `left` = links van de tekst. */
+  imageSide: "left" | "right";
 };
 
-export default function OfflineItem({ title, image }: Props) {
+function RollingHeading({ text }: { text: string }) {
   return (
-    <div className="min-w-0 max-w-full">
-      <h1
-        className={`${anton.className} max-w-full text-[50px] md:text-[80px] wrap-break-word text-(--color-secondary) uppercase flex items-center justify-center`}
-      >
-        {title}
-      </h1>
+    <>
+      {Array.from(text).map((char, i) => {
+        const display = char === " " ? "\u00a0" : char;
+        return (
+          <span
+            key={`${i}-${char}`}
+            className="offline-roll-char"
+            style={
+              {
+                "--roll-delay": `${i * 0.038}s`,
+              } as CSSProperties
+            }
+          >
+            <span className="offline-roll-inner">
+              <span className="offline-roll-line text-(--color-secondary)">
+                {display}
+              </span>
+              <span className="offline-roll-line text-(--color-primary)">
+                {display}
+              </span>
+            </span>
+          </span>
+        );
+      })}
+    </>
+  );
+}
 
-      <Image src={image} alt={title} width={250} height={250} />
+const desktopImageSideClass: Record<Props["imageSide"], string> = {
+  left: "right-[calc(100%+0.75rem)] origin-right",
+  right: "left-[calc(100%+0.75rem)] origin-left",
+};
+
+export default function OfflineItem({ title, image, imageSide }: Props) {
+  return (
+    <div className="offline-item-group flex min-w-0 max-w-full flex-col items-center justify-center gap-4">
+      <div className="relative flex min-w-0 flex-col items-center gap-4">
+        <div className="relative inline-block max-w-full">
+          <Image
+            src={image}
+            alt=""
+            width={250}
+            height={250}
+            aria-hidden
+            className={`offline-item-desktop-image pointer-events-none absolute top-1/2 z-0 hidden h-[200px] w-[200px] rounded-[10px] shadow-lg md:block ${desktopImageSideClass[imageSide]}`}
+          />
+
+          <h1
+            className={`offline-title-hover ${anton.className} relative z-10 inline-flex max-w-full cursor-default flex-wrap justify-center text-center text-[50px] uppercase wrap-break-word leading-none md:text-[80px]`}
+          >
+            <RollingHeading text={title} />
+          </h1>
+        </div>
+
+        <Image
+          src={image}
+          alt={title}
+          width={250}
+          height={250}
+          className="relative z-10 rounded-[10px] md:hidden"
+        />
+      </div>
     </div>
   );
 }
