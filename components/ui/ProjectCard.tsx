@@ -27,10 +27,12 @@ export default function ProjectCard({
         height={400}
         className="max-w-full"
       />
-      <h3 className={`${anton.className} max-w-full wrap-break-word leading-[1.1]`}>
+      <h3
+        className={`${anton.className} max-w-full wrap-break-word leading-[1.1] uppercase text-[20px] md:text-[24px]`}
+      >
         {title}
       </h3>
-      <p className="max-w-full wrap-break-word leading-normal text-(--color-secondary)">
+      <p className="max-w-full wrap-break-word leading-[1.2] md:leading-normal  text-(--color-secondary) text-[16px] md:text-[18px]">
         {description}
       </p>
 
@@ -39,7 +41,7 @@ export default function ProjectCard({
         {tags.map((tag) => (
           <span
             key={tag}
-            className="py-0.5 px-3 border border-(--color-secondary) rounded-[5px] text-(--color-secondary)"
+            className="py-0.5 px-3 border border-(--color-secondary) rounded-[5px] text-(--color-secondary) text-[14px] md:text-[16px])"
           >
             {tag}
           </span>
