@@ -8,9 +8,11 @@ export default function Contact() {
         title="Laten we samen iets moois maken"
         subtitle="Beschikbaar voor afstudeerstage"
       />
-      <div className="md:mt-5">
-        <ActionButton />
-      </div>
+      <a href="mailto:ouassila_01@outlook.com">
+        <div className="md:mt-5">
+          <ActionButton />
+        </div>
+      </a>
     </section>
   );
 }
