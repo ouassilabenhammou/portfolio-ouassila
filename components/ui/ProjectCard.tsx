@@ -19,7 +19,7 @@ export default function ProjectCard({
   alt,
 }: ProjectCardProps) {
   return (
-    <div>
+    <div className="min-w-0 max-w-full">
       <Image
         src={imageUrl}
         alt={alt}
@@ -27,15 +27,21 @@ export default function ProjectCard({
         height={400}
         className="max-w-full"
       />
-      <h3 className={`${anton.className} leading-[1.1]`}>{title}</h3>
-      <p className="leading-normal text-(--color-secondary)">{description}</p>
+      <h3
+        className={`${anton.className} max-w-full wrap-break-word leading-[1.1] uppercase text-[20px] md:text-[24px]`}
+      >
+        {title}
+      </h3>
+      <p className="max-w-full wrap-break-word leading-[1.2] md:leading-normal  text-(--color-secondary) text-[16px] md:text-[18px]">
+        {description}
+      </p>
 
       <span className="text-(--color-muted-text)">{year}</span>
       <div className="flex gap-2">
         {tags.map((tag) => (
           <span
             key={tag}
-            className="py-0.5 px-3 border border-(--color-secondary) rounded-[5px] text-(--color-secondary)"
+            className="py-0.5 px-3 border border-(--color-secondary) rounded-[5px] text-(--color-secondary) text-[14px] md:text-[16px])"
           >
             {tag}
           </span>

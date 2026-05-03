@@ -7,8 +7,10 @@ type Props = {
 
 export default function OfflineItem({ title, image }: Props) {
   return (
-    <div>
-      <h1 className={`${anton.className} text-[80px] text-(--color-secondary)`}>
+    <div className="min-w-0 max-w-full">
+      <h1
+        className={`${anton.className} max-w-full text-[50px] md:text-[80px] wrap-break-word text-(--color-secondary) uppercase flex items-center justify-center`}
+      >
         {title}
       </h1>
 

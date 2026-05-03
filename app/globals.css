@@ -5,6 +5,16 @@
   --color-primary: #4a6fd6;
   --color-secondary: #2d4a8a;
   --color-muted-text: #7c8da6;
+
+  --layout-margin-desktop-inline: 120px;
+  --layout-desktop-col-gap: 24px;
+  --layout-section-gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --layout-section-gap: 6rem;
+  }
 }
 
 *,
@@ -15,10 +25,54 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
   font-family: var(--font-roboto), sans-serif;
   background-color: var(--color-background);
   color: var(--color-primary);
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+@layer base {
+  main {
+    max-width: 100%;
+    overflow-x: clip;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--layout-section-gap);
+  }
+
+  main > section {
+    min-width: 0;
+  }
+
+  /* Mobiel (< md): inhoud op een 4-koloms raster, 16px marge aan de randen. */
+  @media (max-width: 767px) {
+    main {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      column-gap: 16px;
+      padding-inline: 16px;
+    }
+
+    main > section {
+      grid-column: span 4;
+    }
+  }
+
+  /* Desktop (≥1440px): 12 kolommen, 120px paginamarges; tussen kolommen vaste gutter. */
+  @media (min-width: 1440px) {
+    main {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--layout-desktop-col-gap);
+      padding-inline: var(--layout-margin-desktop-inline);
+    }
+
+    main > section {
+      grid-column: span 12;
+    }
+  }
 }

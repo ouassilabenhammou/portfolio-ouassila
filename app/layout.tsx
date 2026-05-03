@@ -1,5 +1,5 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { roboto, anton } from "./fonts";
 
 import Header from "@/components/layout/Header";
@@ -11,6 +11,12 @@ export const metadata: Metadata = {
     "Portfolio van Ouassila, gericht op front-end development en design.",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,9 +25,11 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <body className={`${roboto.variable} ${anton.variable}`}>
-        <Header />
-        {children}
-        <Footer />
+        <div className="flex flex-col py-2 md:py-5">
+          <Header />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
