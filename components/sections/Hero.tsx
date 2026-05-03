@@ -160,7 +160,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex min-h-screen w-full flex-col items-center justify-center"
+      className="relative isolate flex min-h-dvh w-full flex-col items-center justify-center"
     >
       {desktop && (
         <div

@@ -3,7 +3,10 @@ import SectieTitel from "../ui/SectieTitel";
 import ActionButton from "../ui/ActionButton";
 export default function Contact() {
   return (
-    <section className="relative z-10 flex flex-col items-center overflow-hidden rounded-b-[60px] bg-(--color-background) pb-2 md:rounded-b-[85px] md:pb-3">
+    <section
+      id="contact"
+      className="relative z-10 flex scroll-mt-28 flex-col items-center overflow-hidden rounded-b-[60px] bg-(--color-background) pb-2 md:rounded-b-[85px] md:pb-3"
+    >
       <SectieTitel
         title="Laten we samen iets moois maken"
         subtitle="Beschikbaar voor afstudeerstage"

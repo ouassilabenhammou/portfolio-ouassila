@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <body className={`${roboto.variable} ${anton.variable}`}>
-        <div className="flex flex-col py-2 md:py-5">
+        <div className="flex flex-col pb-2 md:pb-5">
           <Header />
           {children}
           <Footer />
