@@ -80,6 +80,12 @@ body {
   }
 }
 
+/* react-fast-marquee: standaard pauze op :hover/:active uitzetten voor deze ticker. */
+.marquee-always-run.rfm-marquee-container:hover .rfm-marquee,
+.marquee-always-run.rfm-marquee-container:active .rfm-marquee {
+  animation-play-state: running !important;
+}
+
 .offline-roll-char {
   display: inline-block;
   overflow: hidden;
