@@ -12,7 +12,11 @@ type ProjectCardProps = {
   projectId: string;
   /** Welke kaart mag op mobiel de overlay tonen (max. één tegelijk). */
   activeProjectId: string | null;
-  setCardEligible: (projectId: string, eligible: boolean, priority: number) => void;
+  setCardEligible: (
+    projectId: string,
+    eligible: boolean,
+    priority: number,
+  ) => void;
   title: string;
   description: string;
   tags: string[];
@@ -120,14 +124,14 @@ export default function ProjectCard({
   return (
     <div
       ref={cardRef}
-      className="group relative mx-auto min-w-0 max-w-full w-fit"
+      className="group relative min-h-0 w-full min-w-0 max-w-full"
     >
       <Image
         src={imageUrl}
         alt={alt}
         width={577}
         height={400}
-        className="relative z-0 max-w-full rounded-[10px] md:rounded-[20px]"
+        className="relative z-0 h-auto w-full max-w-full rounded-[10px] md:rounded-[20px]"
       />
 
       {isDesktop ? (
@@ -136,7 +140,7 @@ export default function ProjectCard({
             className="pointer-events-none absolute inset-0 z-10 rounded-[10px] md:rounded-[20px] bg-black/50 transition-opacity duration-500 ease-out opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100"
             aria-hidden
           />
-          <div className="pointer-events-none absolute left-1/2 bottom-[15px] z-20 w-[550px] max-w-[calc(100%-30px)] h-[155px] -translate-x-1/2 rounded-[10px] bg-(--color-background) transition-all duration-500 ease-out translate-y-2 opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:opacity-100">
+          <div className="pointer-events-none absolute bottom-[15px] left-3 right-3 z-20 h-[155px] overflow-y-auto rounded-[10px] bg-(--color-background) transition-all duration-500 ease-out translate-y-2 opacity-0 md:bottom-5 md:left-4 md:right-4 md:rounded-[12px] md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:opacity-100">
             <ProjectInfo
               title={title}
               description={description}
@@ -154,7 +158,7 @@ export default function ProjectCard({
             transition={overlayTransition}
           />
           <motion.div
-            className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-[15px] z-20 w-[550px] max-w-[calc(100%-30px)] h-[155px] rounded-[10px] bg-(--color-background)"
+            className="pointer-events-none absolute bottom-[15px] left-3 right-3 z-20 h-[155px] overflow-y-auto rounded-[10px] bg-(--color-background) md:bottom-5 md:left-4 md:right-4 md:rounded-[12px]"
             animate={{
               opacity: showInfo ? 1 : 0,
               y: showInfo ? 0 : 8,

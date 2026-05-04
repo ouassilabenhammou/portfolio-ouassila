@@ -43,7 +43,7 @@ export default function Projecten() {
       className={`${sectionFullBleedBackground} before:bg-(--color-background) scroll-mt-28 mb-40`}
     >
       <SectieTitel title="Mijn Werk" subtitle="Geselecteerde projecten" />
-      <div className="mt-8 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-x-[40px] gap-y-[40px] md:mt-20 md:grid-cols-2 xl:grid-cols-2">
         <ProjectCard
           projectId="livewall"
           activeProjectId={activeProjectId}
