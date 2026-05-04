@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative z-10 flex scroll-mt-28 flex-col items-center overflow-hidden rounded-b-[60px] bg-(--color-background) pb-2 md:rounded-b-[85px] md:pb-3"
+      className="relative z-10 flex scroll-mt-28 flex-col items-center overflow-hidden rounded-b-[60px] bg-(--color-background) md:rounded-b-[85px]"
     >
       <SectieTitel
         title="Laten we samen iets moois maken"
