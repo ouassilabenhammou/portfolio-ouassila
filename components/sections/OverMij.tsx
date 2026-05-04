@@ -19,8 +19,9 @@ const mobilePlainLineClass =
 export default function OverMij() {
   return (
     <section
+      id="over-mij"
       aria-labelledby="over-mij-heading"
-      className={`${anton.className} flex w-full min-w-0 max-w-full flex-col items-center text-center uppercase text-[26px] leading-[1.1] text-(--color-secondary) max-md:px-0 md:px-4 min-[1440px]:px-0 lg:text-[45px]`}
+      className={`scroll-mt-28 ${anton.className} flex w-full min-w-0 max-w-full flex-col items-center text-center uppercase text-[26px] leading-[1.1] text-(--color-secondary) max-md:px-0 md:px-4 min-[1440px]:px-0 lg:text-[45px]`}
     >
       <div className="flex w-full min-w-0 max-w-full flex-col items-center gap-5">
         {/* Mobiel — tot lg (tablet / brede phones): zelfde uppercase als sectie */}

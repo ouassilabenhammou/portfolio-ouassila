@@ -39,7 +39,10 @@ const items: OfflineEntry[] = [
 
 export default function EvenOffline() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center">
+    <section
+      id="even-offline"
+      className="scroll-mt-28 flex min-h-screen flex-col items-center justify-center"
+    >
       <SectieTitel
         title="Even Offline"
         subtitle="Als ik even offline ben, ben ik waarschijnlijk..."
