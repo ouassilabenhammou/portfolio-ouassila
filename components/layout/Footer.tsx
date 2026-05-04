@@ -54,7 +54,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2 text-[18px] font-light ">
               <li>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/wassiee013?igsh=MTlvd3phZ25hOThsMA%3D%3D&utm_source=qr"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -62,18 +62,36 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+                <a
+                  href="https://github.com/ouassilabenhammou"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  title="In Progress"
+                  style={{
+                    color: "var(--color-background)",
+                    opacity: "0.5",
+                    cursor: "not-allowed",
+                  }}
+                >
                   LinkedIn
                 </a>
               </li>
               <li>
-                <a href="https://tiktok.com" target="_blank" rel="noreferrer">
+                <a
+                  title="Binnenkort beschikbaar"
+                  style={{
+                    color: "var(--color-background)",
+                    opacity: "0.5",
+                    cursor: "not-allowed",
+                  }}
+                >
                   TikTok
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com" target="_blank" rel="noreferrer">
-                  GitHub
                 </a>
               </li>
             </ul>
