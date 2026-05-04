@@ -14,7 +14,7 @@ type SectieTitelProps = {
 
 export default function SectieTitel({ title, subtitle }: SectieTitelProps) {
   return (
-    <div className="min-w-0 max-w-full flex flex-col items-center text-center gap-2 md:gap-4">
+    <div className="min-w-0 max-w-full flex flex-col items-center text-center gap-4">
       <h2
         className={`${anton.className} max-w-full md:max-w-[660px] text-[50px] md:text-[80px] leading-[1.1] wrap-break-word uppercase`}
       >
