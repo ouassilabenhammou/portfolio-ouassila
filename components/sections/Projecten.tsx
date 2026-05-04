@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import SectieTitel from "../ui/SectieTitel";
+import SectieTitel, { sectionFullBleedBackground } from "../ui/SectieTitel";
 import ProjectCard from "../ui/ProjectCard";
 
 /** Vaste volgorde: bij gelijke prioriteit wint de eerst in de lijst gemelde eligible kaart. */
@@ -38,7 +38,10 @@ export default function Projecten() {
   }, [eligibleMap]);
 
   return (
-    <section id="projecten" className="scroll-mt-28 mb-40">
+    <section
+      id="projecten"
+      className={`${sectionFullBleedBackground} before:bg-(--color-background) scroll-mt-28 mb-40`}
+    >
       <SectieTitel title="Mijn Werk" subtitle="Geselecteerde projecten" />
       <div className="mt-8 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-2">
         <ProjectCard

@@ -1,13 +1,15 @@
 "use client";
 
 import FastMarquee from "react-fast-marquee";
+
+import { sectionFullBleedBackground } from "@/components/ui/SectieTitel";
 import { anton } from "@/app/fonts";
 
 export default function Marquee() {
   return (
     <section
       aria-label="Scrollende oproep: laten we praten"
-      className="relative left-1/2 w-screen max-w-[100vw] min-w-0 shrink-0 -translate-x-1/2 overflow-hidden overscroll-x-none touch-pan-y h-[135px] md:h-[clamp(7.5rem,10vw+5rem,13.75rem)]"
+      className={`${sectionFullBleedBackground} before:bg-(--color-primary) relative left-1/2 w-screen max-w-[100vw] min-w-0 shrink-0 -translate-x-1/2 overflow-hidden overscroll-x-none touch-pan-y h-[135px] md:h-[clamp(7.5rem,10vw+5rem,13.75rem)]`}
     >
       <FastMarquee
         autoFill

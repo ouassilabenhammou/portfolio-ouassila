@@ -5,10 +5,10 @@ export default function Footer() {
   return (
     <footer
       className={[
-        "grid grid-cols-4 gap-x-4 bg-(--color-primary)",
+        "relative z-0 -mt-[85px] grid grid-cols-4 gap-x-4 bg-(--color-primary)",
         "min-h-[clamp(280px,55dvh,660px)]",
         "px-4 min-[768px]:px-8",
-        "pt-[calc(0.5rem+var(--footer-block-padding))] md:pt-[calc(0.75rem+var(--footer-block-padding))]",
+        "pt-[calc(85px+0.5rem+var(--footer-block-padding))] md:pt-[calc(85px+0.75rem+var(--footer-block-padding))]",
         "pb-[calc(env(safe-area-inset-bottom,0)+0.25rem)] md:pb-[calc(env(safe-area-inset-bottom,0)+0.375rem)]",
         "min-[1440px]:grid-cols-12 min-[1440px]:gap-x-(--layout-desktop-col-gap) min-[1440px]:px-(--layout-margin-desktop-inline)",
       ].join(" ")}

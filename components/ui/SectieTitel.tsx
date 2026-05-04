@@ -1,5 +1,12 @@
 import { anton } from "@/app/fonts";
 
+/** Alleen `::before` viewportbreed; sectie blijft `w-full`. Per sectie: `before:bg-(--color-…)`. */
+export const sectionFullBleedBackground = [
+  "relative isolate w-full min-w-0",
+  "before:pointer-events-none before:absolute before:inset-y-0 before:left-1/2 before:-z-10",
+  "before:-ml-[50vw] before:w-[100vw] before:max-w-[100vw]",
+].join(" ");
+
 type SectieTitelProps = {
   title: string;
   subtitle: string;
