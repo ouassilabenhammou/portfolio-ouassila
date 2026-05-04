@@ -17,10 +17,8 @@ export default function Footer() {
         <div className="flex flex-1 items-center justify-between gap-6">
           {/* Links */}
           <div className="min-[768px]:col-span-1 min-[1440px]:col-span-3 text-(--color-background)">
-            <p className="text-[18px] font-semibold tracking-tight ">
-              Pagina’s
-            </p>
-            <ul className="mt-4 space-y-2 text-[18px] font-light ">
+            <p className="text-[18px] font-semibold tracking-tight">Pagina’s</p>
+            <ul className="mt-4 space-y-2 text-[16px] font-normal ">
               <li>
                 <a href="#over-mij">Over mij</a>
               </li>
@@ -39,7 +37,7 @@ export default function Footer() {
           {/* Midden */}
           <div className="flex shrink-0 items-center justify-center min-[1440px]:col-span-2">
             <BloemIcon
-              className="size-16 shrink-0 overflow-visible text-(--color-background)"
+              className="size-20  shrink-0 overflow-visible text-(--color-background)"
               aria-hidden
               focusable="false"
             />
@@ -47,11 +45,9 @@ export default function Footer() {
 
           {/* Rechts */}
           <div className="min-[768px]:col-span-1 min-[1440px]:col-span-3 min-[768px]:text-left text-(--color-background)">
-            <p className="text-[18px] font-semibold tracking-tight ">
-              Volg mij
-            </p>
+            <p className="text-[18px] font-semibold tracking-tight">Volg mij</p>
             {/* Socials */}
-            <ul className="mt-4 space-y-2 text-[18px] font-light ">
+            <ul className="mt-4 space-y-2 text-[16px] font-normal ">
               <li>
                 <a
                   href="https://www.instagram.com/wassiee013?igsh=MTlvd3phZ25hOThsMA%3D%3D&utm_source=qr"
@@ -97,7 +93,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <p className="mt-auto pb-5 text-center text-[16px] text-(--color-background) opacity-50">
+        <p className="mt-auto pb-5 text-center text-[14px] text-(--color-background) opacity-50 ">
           ©2026 Ouassila
         </p>
       </div>
