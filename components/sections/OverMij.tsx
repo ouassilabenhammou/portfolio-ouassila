@@ -23,7 +23,7 @@ export default function OverMij() {
     <section
       id="over-mij"
       aria-labelledby="over-mij-heading"
-      className={`${sectionFullBleedBackground} before:bg-(--color-background) scroll-mt-28 ${anton.className} flex w-full min-w-0 max-w-full flex-col items-center text-center uppercase text-[26px] leading-[1.1] text-(--color-secondary) max-md:px-0 md:px-4 min-[1440px]:px-0 lg:text-[45px]`}
+      className={`${sectionFullBleedBackground} before:bg-(--color-background) scroll-mt-28 ${anton.className} my-12 flex min-h-[min(85dvh,880px)] w-full min-w-0 max-w-full flex-col items-center justify-center py-10 text-center text-[26px] uppercase leading-[1.1] text-(--color-secondary) max-md:my-16 max-md:min-h-[75dvh] max-md:px-0 md:my-20 md:px-4 md:py-14 min-[1440px]:px-0 lg:text-[45px]`}
     >
       <div className="flex w-full min-w-0 max-w-full flex-col items-center gap-5">
         {/* Mobiel — tot lg (tablet / brede phones): zelfde uppercase als sectie */}

@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer
       className={[
-        "relative z-0 -mt-[85px] grid grid-cols-4 gap-x-4 bg-(--color-primary)",
+        "relative z-0 mt-[-85px] grid grid-cols-4 gap-x-4 bg-(--color-primary)",
         "min-h-[clamp(280px,55dvh,660px)]",
         "px-4 min-[768px]:px-8",
         "pt-[calc(85px+0.5rem+var(--footer-block-padding))] md:pt-[calc(85px+0.75rem+var(--footer-block-padding))]",
@@ -100,3 +100,4 @@ export default function Footer() {
     </footer>
   );
 }
+``;
