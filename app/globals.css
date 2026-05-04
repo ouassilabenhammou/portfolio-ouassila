@@ -9,6 +9,9 @@
   --layout-margin-desktop-inline: 120px;
   --layout-desktop-col-gap: 24px;
   --layout-section-gap: 3rem;
+
+  /* Footer: één gedeelde waarde voor verticale “blok”-padding (Tailwind calc wordt zo korter). */
+  --footer-block-padding: clamp(2rem, 6vh, 5rem);
 }
 
 @media (min-width: 768px) {
