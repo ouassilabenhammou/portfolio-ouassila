@@ -24,7 +24,7 @@ export default function GenerativeAiVideoPage() {
             />
           </div>
           <video
-            className="mx-auto h-auto w-full max-w-full rounded-[10px] md:max-w-5xl md:rounded-[20px] lg:max-w-3xl xl:max-w-10xl mt-10  lg:mt-20"
+            className="mx-auto h-auto w-full max-w-full rounded-[10px] bg-black md:max-w-5xl md:rounded-[20px] lg:max-w-3xl xl:max-w-10xl mt-10  lg:mt-20"
             controls
             playsInline
             preload="metadata"
