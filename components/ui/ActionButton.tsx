@@ -62,6 +62,7 @@ export default function ActionButton({
       onMouseLeave={handleLeave}
     >
       <motion.div
+        data-cursor-color="background"
         className="group relative flex items-center justify-center overflow-hidden rounded-full border-4 border-(--color-primary) bg-(--color-background)"
         style={{ width: CIRCLE_PX, height: CIRCLE_PX, x, y }}
       >

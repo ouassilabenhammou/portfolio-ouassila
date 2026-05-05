@@ -4,6 +4,7 @@ import { roboto, anton } from "./fonts";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 export const metadata: Metadata = {
   title: "Ouassila - Portfolio",
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <body className={`${roboto.variable} ${anton.variable}`}>
+        <CustomCursor />
         <div className="flex flex-col justify-between min-h-screen">
           <Header />
           {children}

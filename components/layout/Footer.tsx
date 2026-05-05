@@ -4,6 +4,7 @@ import BloemIcon from "@/public/icons/bloem.svg";
 export default function Footer() {
   return (
     <footer
+      data-cursor-color="background"
       className={[
         "relative z-0 mt-[-85px] grid grid-cols-4 gap-x-4 bg-(--color-primary)",
         "min-h-[clamp(280px,55dvh,660px)]",

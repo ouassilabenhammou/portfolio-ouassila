@@ -41,7 +41,10 @@ function RollingHeading({ text }: { text: string }) {
               <span className="offline-roll-line text-(--color-secondary)">
                 {display}
               </span>
-              <span className="offline-roll-line text-(--color-primary)">
+              <span
+                data-cursor-color="background"
+                className="offline-roll-line text-(--color-primary)"
+              >
                 {display}
               </span>
             </span>
