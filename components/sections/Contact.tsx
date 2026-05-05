@@ -9,7 +9,7 @@ export default function Contact() {
       className={`${sectionFullBleedBackground} before:bg-(--color-background) before:rounded-b-[60px] md:before:rounded-b-[85px] relative z-10 flex min-h-[clamp(22rem,72dvh,780px)] flex-col `}
     >
       <div className="relative z-0 flex min-h-0 w-full min-w-0 flex-1 flex-col items-center justify-center overflow-hidden rounded-b-[60px] md:rounded-b-[85px]">
-        <div className="mt-28">
+        <div className="mt-10 md:mt-20">
           <SectieTitel
             title="Laten we samen iets moois maken"
             subtitle="Beschikbaar voor afstudeerstage"

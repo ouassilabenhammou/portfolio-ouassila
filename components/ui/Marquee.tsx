@@ -9,7 +9,7 @@ export default function Marquee() {
   return (
     <section
       aria-label="Scrollende oproep: laten we praten"
-      className={`${sectionFullBleedBackground} pointer-events-none mt-40 mb-40 before:bg-(--color-primary) relative left-1/2 w-screen max-w-[100vw] min-w-0 shrink-0 -translate-x-1/2 overflow-x-hidden overflow-y-visible overscroll-y-auto h-[135px] md:h-[clamp(7.5rem,10vw+5rem,13.75rem)]`}
+      className={`${sectionFullBleedBackground} pointer-events-none mt-20 mb-20 before:bg-(--color-primary) relative left-1/2 w-screen max-w-[100vw] min-w-0 shrink-0 -translate-x-1/2 overflow-x-hidden overflow-y-visible overscroll-y-auto h-[135px] md:h-[clamp(7.5rem,10vw+5rem,13.75rem)]`}
     >
       <FastMarquee
         autoFill
