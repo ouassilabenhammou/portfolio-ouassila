@@ -2,13 +2,15 @@
 
 import BloemIcon from "@/public/icons/bloem.svg";
 import MenuIcon from "@/components/ui/MenuIcon";
+import Link from "next/link";
 import { useCallback, useEffect, useId, useState } from "react";
 
+/** Pad + hash: werkt op elke route; alleen `#…` zoekt het anker alleen op de huidige pagina (bijv. /generative-ai). */
 const NAV: { id: string; label: string; href: string }[] = [
-  { id: "over-mij", label: "Over mij", href: "#over-mij" },
-  { id: "projecten", label: "Projecten", href: "#projecten" },
-  { id: "even-offline", label: "Even offline", href: "#even-offline" },
-  { id: "contact", label: "Contact", href: "#contact" },
+  { id: "over-mij", label: "Over mij", href: "/#over-mij" },
+  { id: "projecten", label: "Projecten", href: "/#projecten" },
+  { id: "even-offline", label: "Even offline", href: "/#even-offline" },
+  { id: "contact", label: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
@@ -54,6 +56,23 @@ export default function Header() {
   }, [open]);
 
   const close = useCallback(() => setOpen(false), []);
+
+  /** Op `/` volstaat soms hash-navigatie niet met alleen client-side routing; dan expliciet scrollen. */
+  const handleSectionLinkClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, item: (typeof NAV)[number]) => {
+      close();
+      if (typeof window === "undefined") return;
+      const onHome =
+        window.location.pathname === "/" || window.location.pathname === "";
+      if (!onHome) return;
+      const el = document.getElementById(item.id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth" });
+      window.history.replaceState(null, "", item.href);
+    },
+    [close],
+  );
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-2 z-50 max-md:px-4 md:top-5 md:px-8 min-[1440px]:px-(--layout-margin-desktop-inline)">
@@ -107,9 +126,9 @@ export default function Header() {
                       : "";
                   return (
                     <li key={item.id}>
-                      <a
+                      <Link
                         href={item.href}
-                        onClick={close}
+                        onClick={(e) => handleSectionLinkClick(e, item)}
                         className={[
                           "block py-2.5 text-[18px] leading-none",
                           active
@@ -119,7 +138,7 @@ export default function Header() {
                         ].join(" ")}
                       >
                         {item.label}
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}

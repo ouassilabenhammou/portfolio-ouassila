@@ -1,5 +1,6 @@
 import React from "react";
-import SectieTitel from "../ui/SectieTitel";
+
+import SectieTitel, { sectionFullBleedBackground } from "../ui/SectieTitel";
 import OfflineItem from "../ui/OfflineItem";
 
 type OfflineEntry = {
@@ -41,7 +42,7 @@ export default function EvenOffline() {
   return (
     <section
       id="even-offline"
-      className="scroll-mt-28 flex min-h-screen flex-col items-center justify-center"
+      className={`${sectionFullBleedBackground} before:bg-(--color-background) scroll-mt-28 flex min-h-screen flex-col items-center justify-center`}
     >
       <SectieTitel
         title="Even Offline"

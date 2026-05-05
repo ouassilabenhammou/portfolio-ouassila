@@ -28,6 +28,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Vaste header: ankers (/#sectie) niet onder het menu laten verdwijnen */
+  scroll-padding-top: clamp(4.5rem, 12vw, 6rem);
   overflow-x: clip;
   max-width: 100%;
 }
@@ -78,6 +80,12 @@ body {
       grid-column: span 12;
     }
   }
+}
+
+/* react-fast-marquee: standaard pauze op :hover/:active uitzetten voor deze ticker. */
+.marquee-always-run.rfm-marquee-container:hover .rfm-marquee,
+.marquee-always-run.rfm-marquee-container:active .rfm-marquee {
+  animation-play-state: running !important;
 }
 
 .offline-roll-char {

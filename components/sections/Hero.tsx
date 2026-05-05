@@ -3,6 +3,8 @@
 import Image from "next/image";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
+import { sectionFullBleedBackground } from "@/components/ui/SectieTitel";
+
 /** Ruimte tussen rechter rand afbeelding en cursor (px). */
 const CURSOR_GAP_X = 40;
 /** Lagere waarde = meer vertraging / vloeiender volgen (0–1). */
@@ -160,7 +162,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex min-h-dvh w-full flex-col items-center justify-center"
+      className={`${sectionFullBleedBackground} before:bg-(--color-background) flex min-h-dvh flex-col items-center justify-center`}
     >
       {desktop && (
         <div

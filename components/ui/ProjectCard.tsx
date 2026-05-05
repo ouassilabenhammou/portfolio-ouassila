@@ -8,17 +8,23 @@ import { anton } from "@/app/fonts";
 /** Zelfde breakpoint als Tailwind `md`: desktop gebruikt hover i.p.v. whileInView. */
 const DESKTOP_MEDIA = "(min-width: 768px)";
 
-type ProjectCardProps = {
+export type ProjectCardProps = {
   projectId: string;
   /** Welke kaart mag op mobiel de overlay tonen (max. één tegelijk). */
   activeProjectId: string | null;
-  setCardEligible: (projectId: string, eligible: boolean, priority: number) => void;
+  setCardEligible: (
+    projectId: string,
+    eligible: boolean,
+    priority: number,
+  ) => void;
   title: string;
   description: string;
   tags: string[];
   year: number;
-  imageUrl: string;
   alt: string;
+  imageUrl?: string;
+  /** Publieke URL naar de live site (opent in nieuw tabblad). */
+  websiteUrl?: string;
   /** Op mobiel: info pas tonen wanneer de kaart het midden van het scherm kruist. */
   revealWhenCentered?: boolean;
 };
@@ -31,8 +37,9 @@ export default function ProjectCard({
   description,
   tags,
   year,
-  imageUrl,
   alt,
+  imageUrl,
+  websiteUrl,
   revealWhenCentered = false,
 }: ProjectCardProps) {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -117,17 +124,24 @@ export default function ProjectCard({
     delay: 0.14,
   };
 
+  const mediaClasses =
+    "relative z-0 h-auto w-full max-w-full rounded-[10px] md:rounded-[20px]";
+
+  if (!imageUrl) {
+    return null;
+  }
+
   return (
     <div
       ref={cardRef}
-      className="group relative mx-auto min-w-0 max-w-full w-fit"
+      className="group relative min-h-0 w-full min-w-0 max-w-full"
     >
       <Image
         src={imageUrl}
         alt={alt}
         width={577}
         height={400}
-        className="relative z-0 max-w-full rounded-[10px] md:rounded-[20px]"
+        className={mediaClasses}
       />
 
       {isDesktop ? (
@@ -136,12 +150,13 @@ export default function ProjectCard({
             className="pointer-events-none absolute inset-0 z-10 rounded-[10px] md:rounded-[20px] bg-black/50 transition-opacity duration-500 ease-out opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100"
             aria-hidden
           />
-          <div className="pointer-events-none absolute left-1/2 bottom-[15px] z-20 w-[550px] max-w-[calc(100%-30px)] h-[155px] -translate-x-1/2 rounded-[10px] bg-(--color-background) transition-all duration-500 ease-out translate-y-2 opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:opacity-100">
+          <div className="pointer-events-none absolute bottom-[15px] left-3 right-3 z-20 h-[155px] overflow-y-auto rounded-[10px] bg-(--color-background) transition-all duration-500 ease-out translate-y-2 opacity-0 md:bottom-5 md:left-4 md:right-4 md:rounded-[12px] md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:opacity-100 md:group-hover:pointer-events-auto md:group-focus-within:pointer-events-auto">
             <ProjectInfo
               title={title}
               description={description}
               tags={tags}
               year={year}
+              websiteUrl={websiteUrl}
             />
           </div>
         </>
@@ -154,7 +169,7 @@ export default function ProjectCard({
             transition={overlayTransition}
           />
           <motion.div
-            className="pointer-events-none absolute left-1/2 -translate-x-1/2 bottom-[15px] z-20 w-[550px] max-w-[calc(100%-30px)] h-[155px] rounded-[10px] bg-(--color-background)"
+            className={`absolute bottom-[15px] left-3 right-3 z-20 h-[155px] overflow-y-auto rounded-[10px] bg-(--color-background) md:bottom-5 md:left-4 md:right-4 md:rounded-[12px] ${showInfo ? "pointer-events-auto" : "pointer-events-none"}`}
             animate={{
               opacity: showInfo ? 1 : 0,
               y: showInfo ? 0 : 8,
@@ -166,6 +181,7 @@ export default function ProjectCard({
               description={description}
               tags={tags}
               year={year}
+              websiteUrl={websiteUrl}
             />
           </motion.div>
         </>
@@ -174,14 +190,21 @@ export default function ProjectCard({
   );
 }
 
+const linkClass =
+  "shrink-0 text-[13px] font-medium text-(--color-primary) underline underline-offset-2 decoration-(--color-primary) hover:text-(--color-secondary) hover:decoration-(--color-secondary) md:text-[14px]";
+
 function ProjectInfo({
   title,
   description,
   tags,
   year,
-}: Pick<ProjectCardProps, "title" | "description" | "tags" | "year">) {
+  websiteUrl,
+}: Pick<
+  ProjectCardProps,
+  "title" | "description" | "tags" | "year" | "websiteUrl"
+>) {
   return (
-    <div className="flex h-full w-full flex-col gap-3 px-5 py-4">
+    <div className="flex h-full min-h-0 w-full flex-col gap-3 px-5 py-4">
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
         <h3
           className={`${anton.className} max-w-full wrap-break-word leading-[1.1] uppercase text-[18px] md:text-[20px] text-(--color-primary)`}
@@ -194,16 +217,29 @@ function ProjectInfo({
         {description}
       </p>
 
-      <div className="flex flex-wrap gap-2 min-w-0">
+      <div className="flex min-w-0 flex-wrap gap-2">
         {tags.map((tag) => (
           <span
             key={tag}
-            className="py-0.5 px-3 border border-(--color-secondary) rounded-[5px] text-(--color-secondary) text-[12px] md:text-[14px]"
+            className="rounded-[5px] border border-(--color-secondary) px-3 py-0.5 text-[12px] text-(--color-secondary) md:text-[14px]"
           >
             {tag}
           </span>
         ))}
       </div>
+
+      {websiteUrl ? (
+        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-(--color-muted-text)/25 pt-3">
+          <a
+            href={websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkClass}
+          >
+            Website
+          </a>
+        </div>
+      ) : null}
     </div>
   );
 }
