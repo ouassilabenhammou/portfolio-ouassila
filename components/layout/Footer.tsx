@@ -20,16 +20,16 @@ export default function Footer() {
             <p className="text-[18px] font-semibold tracking-tight">Pagina’s</p>
             <ul className="mt-4 space-y-2 text-[16px] font-normal ">
               <li>
-                <a href="#over-mij">Over mij</a>
+                <a href="/#over-mij">Over mij</a>
               </li>
               <li>
-                <a href="#projecten">Mijn werk</a>
+                <a href="/#projecten">Mijn werk</a>
               </li>
               <li>
-                <a href="#even-offline">Even offline</a>
+                <a href="/#even-offline">Even offline</a>
               </li>
               <li>
-                <a href="#contact">Contact</a>
+                <a href="/#contact">Contact</a>
               </li>
             </ul>
           </div>
@@ -100,4 +100,3 @@ export default function Footer() {
     </footer>
   );
 }
-``;

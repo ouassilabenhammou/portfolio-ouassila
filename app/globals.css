@@ -28,6 +28,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Vaste header: ankers (/#sectie) niet onder het menu laten verdwijnen */
+  scroll-padding-top: clamp(4.5rem, 12vw, 6rem);
   overflow-x: clip;
   max-width: 100%;
 }
