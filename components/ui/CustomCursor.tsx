@@ -13,6 +13,7 @@ export default function CustomCursor() {
   const elRef = useRef<HTMLDivElement | null>(null);
   const [iconSrc, setIconSrc] = useState<string>("");
   const iconSrcRef = useRef<string>("");
+  const wantsBgRef = useRef(false);
 
   const target = useRef({ x: -100, y: -100 });
   const current = useRef({ x: -100, y: -100 });
@@ -30,8 +31,7 @@ export default function CustomCursor() {
 
       const hovered = document.elementFromPoint(e.clientX, e.clientY);
       const labeledIcon =
-        (hovered &&
-          (hovered as Element).closest?.("[data-cursor-icon]")) ||
+        (hovered && (hovered as Element).closest?.("[data-cursor-icon]")) ||
         null;
       const nextIconSrc =
         labeledIcon?.getAttribute("data-cursor-icon")?.trim() ?? "";
@@ -41,6 +41,16 @@ export default function CustomCursor() {
         setIconSrc(nextIconSrc);
       }
       el.classList.toggle("custom-cursor--label", Boolean(nextIconSrc));
+
+      const wantsBg = Boolean(
+        (hovered as Element | null)?.closest?.(
+          '[data-cursor-color="background"]',
+        ),
+      );
+      if (wantsBg !== wantsBgRef.current) {
+        wantsBgRef.current = wantsBg;
+        el.classList.toggle("custom-cursor--bg", wantsBg);
+      }
     };
 
     const onLeave = () => {
@@ -49,6 +59,8 @@ export default function CustomCursor() {
       iconSrcRef.current = "";
       setIconSrc("");
       el.classList.remove("custom-cursor--label");
+      el.classList.remove("custom-cursor--bg");
+      wantsBgRef.current = false;
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });

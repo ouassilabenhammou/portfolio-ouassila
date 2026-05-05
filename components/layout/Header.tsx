@@ -92,6 +92,7 @@ export default function Header() {
             </button>
             <a
               href="mailto:ouassila_01@outlook.com"
+              data-cursor-color="background"
               className="inline-flex h-12 shrink-0 items-center justify-center rounded-full bg-(--color-primary) px-6 text-[18px] tracking-tight text-(--color-background)"
             >
               Contact

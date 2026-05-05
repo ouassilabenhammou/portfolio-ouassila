@@ -175,7 +175,8 @@ export default function Hero() {
       <img
         src="/images/naam.svg"
         alt="Hero-afbeelding"
-        className="relative z-2 pointer-events-none h-auto w-[406px] max-w-full md:w-auto md:max-w-none"
+        data-cursor-color="background"
+        className="relative z-2 h-auto w-[406px] max-w-full md:w-auto md:max-w-none"
       />
 
       {desktop && (

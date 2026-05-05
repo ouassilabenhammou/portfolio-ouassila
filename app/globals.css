@@ -60,11 +60,19 @@ body {
   width: 18px;
   height: 18px;
   border-radius: 9999px;
-  background-color: var(--color-primary);
+  --cursor-fill: var(--color-primary);
+  --cursor-icon-fill: var(--color-background);
+  background-color: var(--cursor-fill);
   transform: translate3d(-100px, -100px, 0);
   pointer-events: none;
   z-index: 9999;
   will-change: transform;
+  transition: background-color 0.18s ease-out;
+}
+
+.custom-cursor--bg {
+  --cursor-fill: var(--color-background);
+  --cursor-icon-fill: var(--color-primary);
 }
 
 .custom-cursor--label {
@@ -78,7 +86,7 @@ body {
 .custom-cursor__icon {
   width: 22px;
   height: 22px;
-  background-color: var(--color-background);
+  background-color: var(--cursor-icon-fill);
   -webkit-mask: var(--cursor-icon-url) center / contain no-repeat;
   mask: var(--cursor-icon-url) center / contain no-repeat;
   opacity: 0;
