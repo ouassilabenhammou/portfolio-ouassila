@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function isFinePointerDesktop() {
   if (typeof window === "undefined") return false;
@@ -11,6 +11,8 @@ function isFinePointerDesktop() {
 
 export default function CustomCursor() {
   const elRef = useRef<HTMLDivElement | null>(null);
+  const [iconSrc, setIconSrc] = useState<string>("");
+  const iconSrcRef = useRef<string>("");
 
   const target = useRef({ x: -100, y: -100 });
   const current = useRef({ x: -100, y: -100 });
@@ -25,11 +27,28 @@ export default function CustomCursor() {
     const onMove = (e: MouseEvent) => {
       target.current.x = e.clientX;
       target.current.y = e.clientY;
+
+      const hovered = document.elementFromPoint(e.clientX, e.clientY);
+      const labeledIcon =
+        (hovered &&
+          (hovered as Element).closest?.("[data-cursor-icon]")) ||
+        null;
+      const nextIconSrc =
+        labeledIcon?.getAttribute("data-cursor-icon")?.trim() ?? "";
+
+      if (nextIconSrc !== iconSrcRef.current) {
+        iconSrcRef.current = nextIconSrc;
+        setIconSrc(nextIconSrc);
+      }
+      el.classList.toggle("custom-cursor--label", Boolean(nextIconSrc));
     };
 
     const onLeave = () => {
       target.current.x = -100;
       target.current.y = -100;
+      iconSrcRef.current = "";
+      setIconSrc("");
+      el.classList.remove("custom-cursor--label");
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });
@@ -42,7 +61,9 @@ export default function CustomCursor() {
       current.current.x += dx * 0.22;
       current.current.y += dy * 0.22;
 
-      el.style.transform = `translate3d(${current.current.x - 9}px, ${current.current.y - 9}px, 0)`;
+      const w = el.offsetWidth || 18;
+      const h = el.offsetHeight || 18;
+      el.style.transform = `translate3d(${current.current.x - w / 2}px, ${current.current.y - h / 2}px, 0)`;
       rafId.current = window.requestAnimationFrame(tick);
     };
 
@@ -55,5 +76,18 @@ export default function CustomCursor() {
     };
   }, []);
 
-  return <div ref={elRef} className="custom-cursor" aria-hidden="true" />;
+  return (
+    <div ref={elRef} className="custom-cursor" aria-hidden="true">
+      {iconSrc ? (
+        <span
+          className="custom-cursor__icon"
+          style={
+            {
+              ["--cursor-icon-url" as never]: `url(${iconSrc})`,
+            } as React.CSSProperties
+          }
+        />
+      ) : null}
+    </div>
+  );
 }

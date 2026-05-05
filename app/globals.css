@@ -67,6 +67,32 @@ body {
   will-change: transform;
 }
 
+.custom-cursor--label {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-cursor__icon {
+  width: 22px;
+  height: 22px;
+  background-color: var(--color-background);
+  -webkit-mask: var(--cursor-icon-url) center / contain no-repeat;
+  mask: var(--cursor-icon-url) center / contain no-repeat;
+  opacity: 0;
+  transform: translateY(2px);
+  transition:
+    opacity 0.18s ease-out,
+    transform 0.18s ease-out;
+}
+
+.custom-cursor--label .custom-cursor__icon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (hover: none), (pointer: coarse) {
   .custom-cursor {
     display: none;

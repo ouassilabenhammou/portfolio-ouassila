@@ -16,7 +16,7 @@ export default function Projecten() {
       setEligibleMap((prev) => {
         if (!eligible) {
           if (!(id in prev)) return prev;
-          const { [id]: _, ...rest } = prev;
+          const { [id]: _ignored, ...rest } = prev;
           return rest;
         }
         return { ...prev, [id]: priority };
@@ -45,7 +45,10 @@ export default function Projecten() {
       <div className="mx-auto w-full max-w-7xl">
         <SectieTitel title="Mijn Werk" subtitle="Geselecteerde projecten" />
         <div className="mt-8 grid grid-cols-1 gap-x-[40px] gap-y-[40px] md:mt-20 md:grid-cols-2">
-          <a href="https://livewall-gameshow.vercel.app/ ">
+          <a
+            href="https://livewall-gameshow.vercel.app/ "
+            data-cursor-icon="/icons/arrow-button.svg"
+          >
             <ProjectCard
               projectId="livewall"
               activeProjectId={activeProjectId}
@@ -58,7 +61,10 @@ export default function Projecten() {
               alt="livewall-gameshow"
             />
           </a>
-          <a href="https://css-art-project.vercel.app/">
+          <a
+            href="https://css-art-project.vercel.app/"
+            data-cursor-icon="/icons/arrow-button.svg"
+          >
             <ProjectCard
               projectId="css-art"
               activeProjectId={activeProjectId}
@@ -72,7 +78,10 @@ export default function Projecten() {
               revealWhenCentered
             />
           </a>
-          <a href="https://knmiapp-opdracht.vercel.app/">
+          <a
+            href="https://knmiapp-opdracht.vercel.app/"
+            data-cursor-icon="/icons/arrow-button.svg"
+          >
             <ProjectCard
               projectId="knmi"
               activeProjectId={activeProjectId}
@@ -85,7 +94,7 @@ export default function Projecten() {
               alt="knmi-app landingpage"
             />
           </a>
-          <a href="/generative-ai">
+          <a href="/generative-ai" data-cursor-icon="/icons/arrow-button.svg">
             <ProjectCard
               projectId="generative-ai"
               activeProjectId={activeProjectId}
